@@ -1,0 +1,30 @@
+<h1>
+    Gerenciador de Eventos
+    </h1>
+
+
+<table class="table table-hover table-bordered table-striped">
+    <thead>
+        <tr>
+            <th width="40">#</th>
+            <th>Nome</th>
+            <th>Data de Inicio / Data de Termino</th>
+            <th>Preço (R$)</th>
+            <th *ngIf="ok"  width="70">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let evento of eventos">
+            <td>{{evento.id}}</td>
+            <td>{{evento.nome}}</td>
+            <td>{{evento.dataDeInicio}} - {{evento.dataDeTermino}}</td>
+            <td>{{evento.precoDaInscricao}}</td>
+            <td *ngIf="ok">
+                
+                <button   class="btn btn-default btn-sm" (click)="detalhar(evento)">
+                    <i class="glyphicon glyphicon-zoom-in"></i>
+                </button>             
+            </td>
+        </tr>
+    </tbody>
+</table>
