@@ -1,0 +1,72 @@
+
+      <div class="row">
+            </div> <h1>  
+          Gerenciar inscrições e pagamentos
+          
+            <div class="col-md-2 col-md-offset-10">
+               
+        <button (click)="fechar()" class="btn btn-block btn-info">Voltar</button>
+        
+            </div> 
+          
+                 <h1 *ngIf="evento" >  {{evento.nome}} </h1>
+          
+       
+
+        
+    </h1>
+
+   <div *ngIf="ok == 1" class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Oba!</strong> Os dados foram alterados com sucesso!
+    </div>
+
+       <div *ngIf="ok == 0" class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Ops!</strong> Os dados não foram alterados, ocorreu o erro {{this.errorMessage}}
+    </div>
+
+<table class="table table-hover table-bordered table-striped">
+    <thead>
+        <tr>
+           
+            <th width="40">#</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Sexo</th>
+            <th>Status</th>
+            <th width="100">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let inscrito of inscritos">
+            <td>{{inscrito.pessoa.id}}</td>
+            <td>{{inscrito.pessoa.nome}}</td>
+            <td>{{inscrito.pessoa.email}}</td>
+            <td>{{inscrito.pessoa.sexo}}</td>
+            <td><p *ngIf="inscrito.dataDePagamento != null"> Confirmado </p>
+                <p *ngIf="inscrito.dataDePagamento == null"> Cancelado </p>
+            
+            </td>
+            <td>
+
+                <button *ngIf="inscrito.dataDePagamento == null" class="btn btn-warning btn-sm" (click)="confirmar(inscrito.id)">
+                      <i class="glyphicon glyphicon-remove"></i>
+                </button>   
+                 <button *ngIf="inscrito.dataDePagamento != null" class="btn btn-success btn-sm" (click)="cancelar(inscrito.id)">
+                   <i class="glyphicon glyphicon-ok"></i>
+                </button> 
+                 <button class="btn btn-danger btn-sm" (click)="excluir(inscrito.id)">
+                     <i class="glyphicon glyphicon-trash"></i>
+                </button>           
+            </td>
+        </tr>
+        
+    </tbody>
+    
+</table>
+     
+
+
+
+   

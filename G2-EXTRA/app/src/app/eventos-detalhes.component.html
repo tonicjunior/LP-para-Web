@@ -1,0 +1,31 @@
+     
+<div *ngIf="errorMessage" class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Ops!</strong> {{errorMessage}}
+</div>
+
+<div *ngIf="evento" class="evento">
+    <h1>
+        {{evento.nome}}    
+            <button (click)="gerenciarPagamento()" class="pull-right btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Gerenciar pagamentos</button>
+           
+    </h1>
+    
+    <div class="well">
+       
+    <p>Data de inicio: {{evento.dataDeInicio}}</p>
+    <p>Data de termino: {{evento.dataDeTermino}}</p>
+    <p>Preço da inscrição (R$):   {{evento.precoDaInscricao}}</p>
+    <p>Numero estimado de inscritos : {{evento.numeroEstimadoDeInscritos}}</p>
+    <br/>
+    <div class="well">
+         <h4>Estatísticas do evento:</h4>
+       <p> Quantidade de inscritos : {{quantidadeInscritos}}</p>
+       <p> Valor Recebido pelas inscrições pagas (R$) : {{valorPag}}</p>
+        <p> Porcentagem das incricições : {{perc | percent : '.1-2'}}</p>
+        </div>
+    </div>
+
+</div>
+
+<button (click)="fechar()" class="btn btn-default">Fechar</button>
